@@ -1,0 +1,6 @@
+{% extends "core/base.html" %}{% block title %}Reyting — Inteligence Type{% endblock %}{% block content %}
+<h2>Kunlik reyting</h2><p class="muted">{{ bugun|date:"d.m.Y" }} sanasidagi eng yaxshi natijalar.
+{% if mening %}Sizning o‘rningiz: <b>{{ mening }}</b>.{% elif user.is_authenticated %}Bugun hali mashq qilmadingiz.{% endif %}</p>
+<div class="card tw"><table><thead><tr><th>O‘rin</th><th>Foydalanuvchi</th><th>Eng yaxshi WPM</th><th>Aniqlik</th><th>Mashqlar</th></tr></thead><tbody>
+{% for r in qator %}<tr {% if r.user__username == user.username %}class="me"{% endif %}><td>{{ forloop.counter }}</td><td>{{ r.user__username }}</td><td>{{ r.eng|floatformat:0 }}</td><td>{{ r.aniq|floatformat:0 }}%</td><td>{{ r.soni }}</td></tr>
+{% empty %}<tr><td colspan="5" class="muted">Bugun hali natija yo‘q. Birinchi bo‘lib mashq qiling.</td></tr>{% endfor %}</tbody></table></div>{% endblock %}

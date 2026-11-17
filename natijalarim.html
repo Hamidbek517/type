@@ -1,0 +1,9 @@
+{% extends "core/base.html" %}{% block title %}Natijalarim — Inteligence Type{% endblock %}{% block content %}
+<div class="prof"><span class="ava lg">{{ user.username|first|upper }}</span><div><h2>{{ user.username }}</h2><p class="muted">Ro‘yxatdan o‘tgan sana: {{ user.date_joined|date:"d.m.Y" }}</p></div></div>
+<section class="grid4"><div class="card"><span class="lbl">Eng yuqori WPM</span><b class="big">{{ s.eng }}</b></div>
+<div class="card"><span class="lbl">O‘rtacha aniqlik</span><b class="big">{{ s.aniq }}%</b></div>
+<div class="card"><span class="lbl">Umumiy mashqlar</span><b class="big">{{ s.jami }}</b></div>
+<div class="card"><span class="lbl">Yozilgan belgilar</span><b class="big">{{ s.belgi }}</b></div></section>
+<h3>Oxirgi mashqlar</h3><div class="card tw"><table><thead><tr><th>Sana</th><th>WPM</th><th>CPM</th><th>Aniqlik</th><th>Xatolar</th><th>Vaqt</th></tr></thead><tbody>
+{% for n in royxat %}<tr><td>{{ n.sana|date:"d.m.Y H:i" }}</td><td>{{ n.wpm|floatformat:0 }}</td><td>{{ n.cpm|floatformat:0 }}</td><td>{{ n.aniqlik|floatformat:0 }}%</td><td>{{ n.xatolar }}</td><td>{{ n.vaqt }} s</td></tr>
+{% empty %}<tr><td colspan="6" class="muted">Hali mashq yo‘q. <a href="{% url 'mashq' %}">Birinchi mashqni boshlang</a>.</td></tr>{% endfor %}</tbody></table></div>{% endblock %}

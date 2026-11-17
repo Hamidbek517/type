@@ -1,0 +1,12 @@
+{% extends "core/base.html" %}{% block content %}
+<section class="hero"><h1>Tez yozing. Aniq yozing. O‘z ustingizda ishlang.</h1>
+<p>Yozish tezligingizni sinab ko‘ring va har kuni natijalaringizni yaxshilang.</p>
+<a class="btn lg" href="{% url 'mashq' %}">Mashqni boshlash</a></section>
+<section class="grid4">
+<div class="card"><span class="lbl">Bugungi mashqlar</span><b class="big">{{ s.bugun|default:0 }}</b></div>
+<div class="card"><span class="lbl">Eng yaxshi tezlik</span><b class="big">{{ s.eng|default:0 }}</b><span class="lbl">WPM</span></div>
+<div class="card"><span class="lbl">O‘rtacha aniqlik</span><b class="big">{{ s.aniq|default:0 }}%</b></div>
+<div class="card"><span class="lbl">Umumiy yozilgan so‘zlar</span><b class="big">{{ s.soz|default:0 }}</b></div>
+</section>
+{% if not user.is_authenticated %}<p class="muted note">Natijalaringiz saqlanishi va reytingda ko‘rinishi uchun <a href="{% url 'royxat' %}">ro‘yxatdan o‘ting</a>.</p>{% endif %}
+{% endblock %}

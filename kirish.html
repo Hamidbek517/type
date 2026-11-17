@@ -1,0 +1,3 @@
+{% extends "core/base.html" %}{% block content %}<div class="card form"><h2>Kirish</h2><form method="post">{% csrf_token %}{{ form.as_p }}
+<button class="btn">Kirish</button></form>{% if form.errors %}<p class="err">Foydalanuvchi nomi yoki parol noto‘g‘ri.</p>{% endif %}
+<p class="muted">Hisobingiz yo‘qmi? <a href="{% url 'royxat' %}">Ro‘yxatdan o‘ting</a>.</p></div>{% endblock %}

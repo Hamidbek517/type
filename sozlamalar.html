@@ -1,0 +1,5 @@
+{% extends "core/base.html" %}{% block title %}Sozlamalar — Inteligence Type{% endblock %}{% block content %}
+<h2>Sozlamalar</h2><div class="card" style="max-width:480px"><span class="lbl">Ko‘rinish</span>
+<div class="seg" id="tema"><button data-t="light">Yorug‘</button><button data-t="dark">Qorong‘i</button></div></div>
+<script>const b=[...document.querySelectorAll("#tema button")];const up=()=>b.forEach(x=>x.classList.toggle("on",x.dataset.t===document.documentElement.dataset.theme));
+b.forEach(x=>x.onclick=()=>{localStorage.setItem("tema",x.dataset.t);document.documentElement.dataset.theme=x.dataset.t;up()});up()</script>{% endblock %}

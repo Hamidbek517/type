@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}{% load static %}{% block title %}Matn terish — Inteligence Type{% endblock %}{% block content %}
+<section class="card" id="app" data-auth="{{ user.is_authenticated|yesno:'1,0' }}" data-url="{% url 'saqlash' %}" data-matn="{% url 'matn_api' %}">
+<div class="bar"><div class="seg" id="vaqt"><button data-s="30" class="on">30 soniya</button><button data-s="60">1 daqiqa</button></div>
+<button class="btn" id="boshla">Boshlash</button></div>
+<div class="live"><div><span class="lbl">Qolgan vaqt</span><b id="t">30</b></div><div><span class="lbl">Tezlik (WPM)</span><b id="w">0</b></div>
+<div><span class="lbl">Aniqlik</span><b id="a">100%</b></div><div><span class="lbl">Xatolar</span><b id="x">0</b></div></div>
+<div id="matn" class="matn" aria-label="Terish uchun matn"></div>
+<textarea id="in" rows="2" disabled placeholder="Boshlash tugmasini bosing, so‘ng yozishni boshlang" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
+<p class="muted sm">Taymer birinchi harf yozilganda ishga tushadi.</p></section>
+<div class="modal" id="modal" hidden><div class="card mbox">
+<h2>Natija</h2><p class="muted" id="sana"></p><p id="rek" class="rek" hidden></p>
+<div class="main"><span class="lbl">WPM</span><b id="rw">0</b></div>
+<div class="grid3"><div class="card in"><span class="lbl">Aniqlik</span><b id="ra"></b></div><div class="card in"><span class="lbl">CPM</span><b id="rc"></b></div>
+<div class="card in"><span class="lbl">Xatolar</span><b id="rx"></b></div><div class="card in"><span class="lbl">To‘g‘ri belgilar</span><b id="rt"></b></div>
+<div class="card in"><span class="lbl">Sarflangan vaqt</span><b id="rv"></b></div><div class="card in"><span class="lbl">Shaxsiy rekord</span><b id="rr"></b></div></div>
+<p class="muted" id="solish"></p>
+<div class="grid2"><div><span class="lbl">Tezlik grafigi (WPM)</span><svg id="g1" viewBox="0 0 300 90"></svg></div><div><span class="lbl">Aniqlik grafigi (%)</span><svg id="g2" viewBox="0 0 300 90"></svg></div></div>
+<div class="acts"><button class="btn" id="qayta">Qayta mashq qilish</button><a class="btn ghost" href="{% url 'home' %}">Bosh sahifaga qaytish</a></div></div></div>
+<script src="{% static 'core/mashq.js' %}"></script>{% endblock %}
